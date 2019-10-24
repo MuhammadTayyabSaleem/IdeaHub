@@ -52,7 +52,7 @@ class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="login">
+      <div className="login" style={{height:'475px', overflow:'auto'}}>
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">

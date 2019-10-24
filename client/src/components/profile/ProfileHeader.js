@@ -5,7 +5,7 @@ import Spinner from '../common/Spinner';
 
 class ProfileHeader extends Component {
   render() {
-    const { profile } = this.props;
+    const { profile,currentUser } = this.props;
 
     const {  loading } = this.props.profile;
     let profileContent='';
@@ -46,6 +46,14 @@ class ProfileHeader extends Component {
                     <i className="fas fa-globe fa-2x" />
                   </a>
                 )}
+
+                <a
+                    className="text-white p-2" rel="noopener noreferrer" 
+                    href={`/chat/${currentUser}/${profile.user._id}`}
+                    
+                  >
+                    <i className="far fa-comment fa-2x" />
+                  </a>
 
                 {isEmpty(profile.social && profile.social.twitter) ? null : (
                   <a

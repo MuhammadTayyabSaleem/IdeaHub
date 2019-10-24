@@ -25,7 +25,7 @@ class PostItem extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    if(100-this.props.post.sharesSold == 0)
+    if(100-this.props.post.sharesSold === 0)
     {
       window.alert('Sorry all the shares are sold for this idea.');
     }
@@ -33,7 +33,10 @@ class PostItem extends Component {
       window.alert(`You can not buy more than ${100-this.props.post.sharesSold} shares`);
   }
   else{
-    console.log(this.state.numberOfShares);
+    let amount=(this.state.numberOfShares * this.props.post.sharePrice);
+    if(amount > parseInt(this.props.auth.user.balance,10))
+    {window.alert('You do not have enough balance to buy such shares')}
+    else{
     if(window.confirm(`Are you sure you want to buy ${this.state.numberOfShares} shares for ${this.state.numberOfShares * this.props.post.sharePrice} Rs/-`))
     {
       const requestData = {
@@ -41,12 +44,12 @@ class PostItem extends Component {
         sellerId: this.props.post.user,
         postId: this.props.post._id,
         shares: this.state.numberOfShares,
-        amount: (this.state.numberOfShares * this.props.post.sharePrice).toString()
+        amount: amount.toString()
       };
       console.log(requestData);
   
       this.props.makeRequest(requestData);
-    }}
+    }}}
      
   }
 

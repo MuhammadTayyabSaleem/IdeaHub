@@ -11,6 +11,8 @@ import store from './store';
 import PrivateRoute from './components/common/PrivateRoute';
 
 import Navbar from './components/layout/Navbar';
+import Chat from './components/chat/Chat';
+import Inbox from './components/chat/Inbox';
 import Footer from './components/layout/Footer';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
@@ -26,8 +28,12 @@ import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
 import NotFound from './components/not-found/NotFound';
-
 import './App.css';
+// import Chatboard from './components/chat/Chatboard';
+// import Store from './components/chat/Store';
+
+
+
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -58,11 +64,17 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Route exact path="/" component={Landing} />
-            <div className="container">
+            <div className="container" style={{minHeight:'100%'}}>
+            
+            {/* <Store >
+            <Route exact path="/chatboard" component={Chatboard}/>
+            </Store> */}
+
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/profile/:handle" component={Profile} />
+              
               <Switch>
+                <PrivateRoute exact path="/profile/:handle" component={Profile} />
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
               <Switch>
@@ -106,6 +118,10 @@ class App extends Component {
                 <PrivateRoute exact path="/requests" component={Requests} />
               </Switch>
               <Route exact path="/not-found" component={NotFound} />
+              <Switch>
+              <PrivateRoute exact path="/chat/:handle/:handle2" component={Chat} />
+              <PrivateRoute exact path="/inbox" component={Inbox} />
+              </Switch>
             </div>
             <Footer />
           </div>

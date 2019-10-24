@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
 import { clearCurrentProfile } from '../../actions/profileAction';
 
+
 class Navbar extends Component {
   onLogoutClick(e) {
     e.preventDefault();
@@ -29,7 +30,7 @@ class Navbar extends Component {
             Post Feed
           </Link>
         </li>
-        
+      
 
       <li className="nav-item">
       <Link className="nav-link" to="/dashboard">
@@ -43,6 +44,12 @@ class Navbar extends Component {
             Requests
           </Link>
         </li>
+        
+        <li className="nav-item">
+          <Link className="nav-link" to="/inbox">
+            Inbox
+          </Link>
+      </li>
         
         <li className="nav-item">
           <a
@@ -59,6 +66,10 @@ class Navbar extends Component {
             />({user.type}) Logout
           </a>
         </li>
+        <li className="nav-item" style={{marginLeft:'10px'}}>
+          <p style={{color:'gray',marginBottom:'-15px'}}> Balance:</p>
+          <p style={{color:'gray',marginTop:'8px'}}> ${user.balance}</p >
+      </li>
       </ul>
     );
 
@@ -78,7 +89,7 @@ class Navbar extends Component {
     );
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+      <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4 " >
         <div className="container">
           <Link className="navbar-brand" style={{fontFamily:'normal', fontSize:'35px'}} to="/">
             IdeaHub 

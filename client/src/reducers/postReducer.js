@@ -3,6 +3,7 @@ import {
   GET_POSTS,
   GET_POST,
   DELETE_POST,
+  // eslint-disable-next-line
   ADD_LIKE,
   POST_LOADING
 } from '../actions/types';

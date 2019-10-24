@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Spinner from '../common/Spinner';
 import RequestItem from './RequestItem';
 import { getRequests } from '../../actions/postActions';
-import isEmpty from '../../validation/is-empty'
 
 class Requests extends Component {
   componentDidMount() {

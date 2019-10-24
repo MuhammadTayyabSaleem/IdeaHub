@@ -82,7 +82,7 @@ router.post('/login', (req,res) =>
       if(isMatched){
         
 
-        const payload = {id: user.id, name:user.name, avatar: user.avatar , type: user.type}
+        const payload = {id: user.id, name:user.name, avatar: user.avatar , type: user.type, balance: user.balance}
         
         jwt.sign(payload, keys.secretOrKey, {expiresIn: 3600},(err,token) =>{
           res.json({success:true,

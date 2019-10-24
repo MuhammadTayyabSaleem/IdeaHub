@@ -25,7 +25,9 @@ class Profile extends Component {
 
   render() {
     const { profile, loading } = this.props.profile;
+    const { user } = this.props.auth;
     let profileContent;
+    
 
     if (profile === null || loading || isEmpty(profile)) {
       profileContent = <Spinner />;
@@ -40,7 +42,7 @@ class Profile extends Component {
             </div>
             <div className="col-md-6" />
           </div>
-          <ProfileHeader profile={profile} />
+          <ProfileHeader profile={profile} currentUser={user.id} />
           <ProfileAbout profile={profile} />
           <ProfileCreds
             education={profile.education}
@@ -67,11 +69,13 @@ class Profile extends Component {
 
 Profile.propTypes = {
   getProfileByHandle: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile
+  profile: state.profile,
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, { getProfileByHandle })(Profile);

@@ -12,7 +12,7 @@ class Landing extends Component {
 
   render() {
     return (
-      <div className="landing">
+      <div className="landing" style={{height:'547px', overflow:'auto'}}>
         <div className="dark-overlay landing-inner text-light">
           <div className="container">
             <div className="row">

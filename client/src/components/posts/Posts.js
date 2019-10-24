@@ -19,22 +19,47 @@ class Posts extends Component {
     if (posts === null || loading) {
       postContent = <Spinner />;
     } else {
-
+      if(posts.length < 1 && user.type === 'ideaPitcher' )
+      {
+        postContent =
+        <div>
+        <p className="lead text-center">
+                Share an idea and get Investors and Developers
+              </p>
+        <PostForm />
+        <h3>No posts Found!</h3>
+        </div>
+      }
+      else if(posts.length < 1 && user.type != 'ideaPitcher')
+      {
+        postContent =
+        <div>
+          <p className="lead text-center">
+                Invest in new Ideas or Privide Service
+              </p>
+        <h3>No posts Found!</h3>
+        </div>
+      }
+      else{
       if(user.type === 'ideaPitcher'){
         
         postContent = 
         <div>
+          <p className="lead text-center">
+                Share an idea and get Investors and Developers
+              </p>
         <PostForm />
         <PostFeed posts={posts} /></div>;
       }
       else{
         postContent = <div>
-
-        <h1 className='text-center'>Idea Feed</h1>
+        <p className="lead text-center">
+                Invest in new Ideas or Privide Service
+              </p>
         <br/><br/>
         <PostFeed posts={posts} />
         </div>  ;
-      }
+      }}
     }
 
     return (
@@ -42,7 +67,8 @@ class Posts extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              
+            <h1 className='display-4 text-center'>Idea Feed</h1>
+            
               {postContent}
             </div>
           </div>

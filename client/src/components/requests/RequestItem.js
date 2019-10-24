@@ -2,17 +2,13 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import isEmpty from '../../validation/is-empty';
 import img from '../../img/request.jpg';
 import { acceptRequestUpdatePost,rejectRequest } from '../../actions/postActions';
 import { connect } from 'react-redux';
 
 
 class RequestItem extends Component {
-  constructor(props) {
-    super(props);
-  }
+  
   
   acceptRequest(id)
     {

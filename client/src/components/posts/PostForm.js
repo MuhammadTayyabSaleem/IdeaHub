@@ -19,6 +19,7 @@ class PostForm extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onChangePrice = this.onChangePrice.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -29,10 +30,8 @@ class PostForm extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log('on submit called');
 
      const { user } = this.props.auth;
-
      const newPost = {
       title: this.state.title,
       sharePrice: this.state.sharePrice,
@@ -41,14 +40,19 @@ class PostForm extends Component {
       avatar: user.avatar,
       user:user.id
     };
-    console.log(newPost);
     this.setState({ title: '' ,description: '' ,sharePrice: '',displaySharePriceInput: false });
     this.props.addPost(newPost);
   }
 
   onChange(e) {
+    
     this.setState({ [e.target.name]: e.target.value });
   }
+  onChangePrice(e) {
+    const re = /^[0-9\b]+$/;
+    if (e.target.value === '' || re.test(e.target.value)) {
+    this.setState({ [e.target.name]: e.target.value });
+  }}
 
   render() {
     const { errors,displaySharePriceInput } = this.state;
@@ -61,7 +65,7 @@ class PostForm extends Component {
                   placeholder="Enter Price Per Share in RS/-"
                   name="sharePrice"
                   value={this.state.sharePrice}
-                  onChange={this.onChange}
+                  onChange={this.onChangePrice}
                   error={errors.sharePrice}
                 />
           
