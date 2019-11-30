@@ -1,0 +1,46 @@
+/* /* .root {
+  text-align:center;
+  margin: 50px;
+  padding: 3;
+}
+.flex{
+  display: 'flex';
+  margin-top: '3px'; 
+}
+.topicsWindow{
+  width:'30%';
+  height:'300px';
+  
+}
+.chatWindow{
+  width:'90%';
+  align-content: left;
+  padding:'20px';
+  
+}
+.chatBox{
+  width:'80%';
+}
+.sendButton{
+  width:'20%';
+} * */
+/* width */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
